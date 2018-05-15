@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Resign</title>
+	<script type="text/javascript">
+		var btn_stop = document.getElementById("btn_stop");
+		
+		function goBack() {
+		    window.history.back();
+		}
+		
+		function move_check() {
+				if (confirm("정말로 탈퇴하시겠습니까?"))
+					return true;
+				else
+					return false;
+		}//move_check()
+		
+		btn_stop.onclick = move_check;
+	</script>
+</head>
+
+<body>
+
+<h1>회원 탈퇴하기</h1>
+	<form method="post" action="resign_member.jsp" onsubmit="return move_check();">
+		<p>
+			아이디: <input type="text" name="user_id"/><br/>
+			비밀번호: <input type="password" name="password" /><br /> 
+		</p>
+		<p>
+			<input type="submit" value="탈퇴하기" /> 
+			<input type="button" onclick="goBack()" value="뒤로 가기" />
+		</p>
+	</form>
+
+</body>
+</html>

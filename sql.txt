@@ -1,0 +1,80 @@
+﻿-- create database
+drop database pubgDB;
+create database pubgDB;
+use pubgDB;
+
+-- create table
+create table member(
+    id int primary key auto_increment,
+    user_id varchar(30) unique key not null,
+    password varchar(30) not null,
+    address varchar(100) null,
+    email varchar(50) unique key not null
+);
+
+CREATE TABLE `free_board` (
+  `regno` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) NOT NULL,
+  `f_title` varchar(100) NOT NULL,
+  `f_text` varchar(400) DEFAULT NULL,
+  `f_date` char(16) NOT NULL,
+  PRIMARY KEY (`regno`),
+  constraint fk_free_user_id foreign key(user_id) references member(user_id)  
+);
+
+create TABLE qa_board(
+  `regno` INT NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(15) not NULL,
+  `email` VARCHAR(20) not NULL,
+  `qa_title` VARCHAR(40)  NULL,
+  `qa_text` VARCHAR(300)  NULL,
+  `qa_date` VARCHAR(16) NOT NULL,
+
+  PRIMARY KEY (`regno`),
+    constraint fk_qa_user_id foreign key(user_id) references member(user_id),
+    CONSTRAINT `fk_email` FOREIGN KEY (`email`) REFERENCES `member` (`email`)
+);
+     
+CREATE TABLE notice_board (
+  `regno` INT NOT NULL AUTO_INCREMENT,
+  `user_id` VARCHAR(15) not NULL,    
+  `no_title` VARCHAR(50) NULL,
+  `no_text` VARCHAR(500) NULL,
+  `no_date`  VARCHAR(16) NOT NULL,
+  PRIMARY KEY (`regno`),
+  constraint fk_notice_user_id foreign key(user_id) references member(user_id)
+);
+
+-- insert values
+insert into member(user_id, password, address, email) values('admin', '1111', '운영자', 'admin@naver.com');
+insert into member(user_id, password, address, email) values('aaa', 'bbb', '서울시 강남구', 'aaa@naver.com');
+insert into free_board(user_id, f_title, f_text, f_date) values('aaa','커뮤니티가 좋네요!', '하하하하', '2018-05-13');
+
+
+delimiter $$
+CREATE PROCEDURE setNotice()
+ BEGIN
+  DECLARE i INT DEFAULT 1;    
+  WHILE (i<=100) DO
+   INSERT INTO `pubgDB`.`notice_board` (`user_id`, `no_title`, `no_text`, `no_date`) VALUES 
+    ('aaa', 'ssssss', 'ddddddddd', '2008-08-07');
+   SET i=i+1;
+  END WHILE;
+ END$$
+
+delimiter $$
+CREATE PROCEDURE setQA()
+ BEGIN
+  DECLARE j INT DEFAULT 1;    
+  WHILE (j<=100) DO
+   insert into pubgDB.qa_board (user_id, email,qa_title, qa_text, qa_date) values 
+	('aaa','aaa@naver.com', CONCAT("title", j), CONCAT("texttest", j), '2018-05-07');
+   SET j=j+1;
+  END WHILE;
+ END$$
+
+delimiter ;
+call setNotice();
+call setQA();
+
+    
