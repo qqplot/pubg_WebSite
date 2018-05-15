@@ -13,9 +13,10 @@
 </script>
 <!-- 관리자 계정 체크 -------------------------------------------------- -->
 <%
+    session.setAttribute("user", "admin");
 	String userID = (String) session.getAttribute("user");
 
-	if (userID.equals("admin_test")) {
+	if (userID.equals("admin")) {
 %>
 <script type="text/javascript">
 	alert("admin님 환영합니다.")

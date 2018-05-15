@@ -43,7 +43,7 @@
 				out.print("location.href='joinForm.jsp';");
 				out.print("</script>");
 			}
-		} // outer if ~ else	
+		} // outer if ~ else	 
 	%>			
 		
 	

@@ -14,35 +14,35 @@ create table member(
 
 CREATE TABLE `free_board` (
   `regno` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(20) NOT NULL,
+  `user_id` varchar(20) NULL,
   `f_title` varchar(100) NOT NULL,
   `f_text` varchar(400) DEFAULT NULL,
   `f_date` char(16) NOT NULL,
   PRIMARY KEY (`regno`),
-  constraint fk_free_user_id foreign key(user_id) references member(user_id)  
+  constraint fk_free_user_id foreign key(user_id) references member(user_id) ON DELETE set null  ON UPDATE set null  
 );
 
 create TABLE qa_board(
   `regno` INT NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(15) not NULL,
-  `email` VARCHAR(20) not NULL,
+  `user_id` varchar(15) NULL,
+  `email` VARCHAR(20) NULL,
   `qa_title` VARCHAR(40)  NULL,
   `qa_text` VARCHAR(300)  NULL,
   `qa_date` VARCHAR(16) NOT NULL,
 
   PRIMARY KEY (`regno`),
-    constraint fk_qa_user_id foreign key(user_id) references member(user_id),
-    CONSTRAINT `fk_email` FOREIGN KEY (`email`) REFERENCES `member` (`email`)
+    constraint fk_qa_user_id foreign key(user_id) references member(user_id) ON DELETE set null  ON UPDATE set null ,
+    CONSTRAINT `fk_email` FOREIGN KEY (`email`) REFERENCES `member` (`email`) ON DELETE set null  ON UPDATE set null 
 );
      
 CREATE TABLE notice_board (
   `regno` INT NOT NULL AUTO_INCREMENT,
-  `user_id` VARCHAR(15) not NULL,    
+  `user_id` VARCHAR(15) NULL,    
   `no_title` VARCHAR(50) NULL,
   `no_text` VARCHAR(500) NULL,
   `no_date`  VARCHAR(16) NOT NULL,
   PRIMARY KEY (`regno`),
-  constraint fk_notice_user_id foreign key(user_id) references member(user_id)
+  constraint fk_notice_user_id foreign key(user_id) references member(user_id) ON DELETE set null  ON UPDATE set null 
 );
 
 -- insert values

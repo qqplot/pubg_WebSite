@@ -19,13 +19,15 @@
 		String email = request.getParameter("email");
 
 		String id = (String) session.getAttribute("id" + index);
-
+        int regno = Integer.parseInt(index);
+		
+		
 		QnABean qnABean = new QnABean();
 		QnASQL qnASQL = new QnASQL();
 
 		System.out.printf("id = %s , title = %s , email = %s ,date = %s text = %s", id, title, email, date, text);
 
-		qnABean.setUser_id(id); //아이디 설정 
+		qnABean.setRegno(regno);
 		qnABean.setQ_title(title);
 		qnABean.setQ_text(text);
 		qnABean.setEmail(email);

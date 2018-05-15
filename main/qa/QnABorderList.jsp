@@ -75,7 +75,7 @@
 				<tr>
 					<td><%=qnABean.getRegno()%></td>
 					<td><%=qnABean.getUser_id()%></td>
-					<td><a href="QnATextView.jsp?count=<%=i%>"> <%=qnABean.getQ_title()%></a></td>
+					<td><a href="qa/QnATextView.jsp?count=<%=i%>"> <%=qnABean.getQ_title()%></a></td>
 					<td><%=qnABean.getQ_date()%></td>
 
 				</tr>

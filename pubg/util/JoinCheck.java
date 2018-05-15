@@ -3,6 +3,7 @@ package pubg.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -15,6 +16,7 @@ public class JoinCheck {
 	
 	private Connection con = null;
 	private Statement st = null;
+	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 
 	// Constructor (Connect to the Driver)
@@ -29,19 +31,20 @@ public class JoinCheck {
 
 	// Member Methods
 	public boolean check_value(String column_name, String user_input) { // Check Duplication
-		String query = "select '" + column_name + "' from member";
+		String query = "select " + column_name + " from member";
 		try {
 			con = DriverManager.getConnection(URL, ID, PW); // Synchronize with DB
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 
 			while (rs.next()) {
-				if (rs.getString(column_name).equals(user_input)) {
+				if (rs.getString(1).equals(user_input)) {
 					return true;
 				}
 			}
 		} catch (SQLException e) {
 			System.out.println("(서버) DB 연동에 실패했습니다...");
+			System.out.println("(서버) " + e);
 		} finally {
 			if (rs != null) {
 				try {
@@ -107,16 +110,21 @@ public class JoinCheck {
 	} // check_login()
 
 	public boolean insert_sql(String user_id, String password, String address, String email) {
-		String query_insert = "insert into member(user_id, password, address, email) values("
-				+ user_id +","+ password +","+ address + "," + email + ")";
+		String query_insert = "insert into member(user_id, password, address, email) values(?,?,?,?)";
 
 		try {
 			con = DriverManager.getConnection(URL, ID, PW); // Synchronize with DB
-			st = con.createStatement();
-			st.executeUpdate(query_insert);
+			ps = con.prepareStatement(query_insert);
+			ps.setString(1, user_id);
+			ps.setString(2, password);
+			ps.setString(3, address);
+			ps.setString(4, email);
+			ps.executeUpdate();
+			
 			return true;
 		} catch (SQLException e) {
 			System.out.println("(서버) 회원가입에 실패했습니다.");
+			System.out.println("(서버) ERR : " + e);
 		} finally {
 			if (rs != null) {
 				try {
@@ -144,14 +152,17 @@ public class JoinCheck {
 	} // insert_sql()
 
 	public boolean delete_sql(String user_id, String password) {
-		String query_delete = "delete from member where user_id = '" + user_id + "' and password = '" + password + "'";
+		String query_delete = "delete from member where user_id = ? and password = ?";
 		try {
 			con = DriverManager.getConnection(URL, ID, PW); // Synchronize with DB
-			st = con.createStatement();
-			st.executeUpdate(query_delete);
+			ps = con.prepareStatement(query_delete);
+			ps.setString(1, user_id);
+			ps.setString(2, password);
+			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			System.out.println("(서버) 탈퇴에 실패했습니다.");
+			System.out.println("(서버) " + e);
 		} finally {
 			if (rs != null) {
 				try {

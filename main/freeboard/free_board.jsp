@@ -18,10 +18,10 @@
 <!-- 글 제목~라인의 바디 클릭시 regno이용한 f_text select -->
 <table border="1">
 <tr>
-	<th>글번호(regno)</th>
-	<th>작성자(user_id)</th>
-	<th>글제목(f_title)</th>
-	<th>작성일(f_date)</th>
+	<th width="50">글번호</th>
+	<th width="120">작성자</th>
+	<th width="300">글제목</th>
+	<th>작성일</th>
 </tr>
 <%
 	Vector<FreeBoardBeanz> vt = FBjdbc.getFBoardList();

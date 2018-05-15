@@ -72,7 +72,7 @@ Vector<NoticeBean> vc = noticeSQL.SelectAll();
     	  %>
     	  <tr>  
         <td width="50px"> <%=noticeBean.getRegno() %> </td>
-        <td width="700px"> <a href="NoticeTextView.jsp?count1=<%=i%>"><%=noticeBean.getNo_title() %></a> </td>
+        <td width="700px"> <a href="notice/NoticeTextView.jsp?count1=<%=i%>"><%=noticeBean.getNo_title() %></a> </td>
         <td width="130px"> <%=noticeBean.getNo_date() %></td>
        </tr> 
    <%

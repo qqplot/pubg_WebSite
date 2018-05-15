@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>free_board_writing</title>
+<title>자유게시판 - 글 작성</title>
 </head>
 <body>
 <h1>글쓰기</h1>
@@ -13,9 +13,11 @@
 
 <p>
 <%-- 작성자를 세션에서 받아오는 걸로 수정 완료 --%>
-작성자 : <input type="text" name="user_id"  value=<%=session.getAttribute("user_id") %> size="20"/><br/>
-제목 : <textarea name="f_title" cols="50" rows="1">최대 50자</textarea><br/>
-내용 : <textarea name="f_text" cols="40" rows="5">최대 200자</textarea>
+작성자 : <input type="text" name="user_id"  value=<%=session.getAttribute("user_id") %> size="20" readonly/><br/>
+제목 : <textarea name="f_title" cols="50" rows="1" onclick="if(this.value==this.defaultValue){this.value=''}"
+onblur="if (this.value == '') { this.value = this.defaultValue; }">최대 50자</textarea><br/>
+내용 : <textarea name="f_text" cols="40" rows="5" onclick="if(this.value==this.defaultValue){this.value=''}"
+onblur="if (this.value == '') { this.value = this.defaultValue; }">최대 200자</textarea>
 </p>
 <p>
 <input type="submit" value="작성"/>

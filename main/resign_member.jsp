@@ -8,34 +8,42 @@
 <title>Resign</title>
 </head>
 <body>
-	
+	<script type="'text/javascript'"></script>
 	<%
 		request.setCharacterEncoding("utf-8");
 		
 		// Get Variables for Request
 		String user_id = request.getParameter("user_id");
 		String password = request.getParameter("password");
-		
+		out.print(user_id);
+		out.print(password);
 		JoinCheck jc = new JoinCheck();
+		out.print(jc.check_value("user_id", user_id));
+		out.print(jc.check_value("password", password));
 		
 		if(!jc.check_value("user_id", user_id)){
-			out.print("<script>");
+			out.print("<script type='text/javascript'>");
 			out.print("alert('찾는 아이디가 없습니다. 다시 입력하세요.');");
-			out.print("location.href='resign_member.html'; ");
+			//out.print("location.href='resign_member.html'; ");
 			out.print("</script>");
+		} else if(!jc.check_login(user_id, password)){
+			out.print("<script type='text/javascript'>");
+			out.print("alert('비밀번호가 틀렸습니다. 다시 입력하세요.');");
+			//out.print("location.href='resign_member.html'; ");
+			out.print("</script>");	
 		} else {
 			if(jc.delete_sql(user_id, password)){
-				out.print("<script>");
+				out.print("<script type='text/javascript'>");
 				out.print("alert('탈퇴가 완료되었습니다. 지금까지 활동에 감사드립니다.'); ");
-				out.print("location.href='../index/index.html'; ");
+				//out.print("location.href='../index/index.html'; ");
 				out.print("</script>");
 			} else {
-				out.print("<script>");
-				out.print("alert('탈퇴에 실패했습니다. 비밀번호를 다시 입력하세요.');");
-				out.print("location.href='resign_member.html';");
+				out.print("<script type='text/javascript'>");
+				out.print("alert('탈퇴에 실패했습니다.');");
+				//out.print("location.href='resign_member.html';");
 				out.print("</script>");
 			}
-		} // outer if ~ else	
+		} // outer if ~ else	 
 	%>			
 		
 	

@@ -49,7 +49,7 @@ if(index ==null){
     
     
     <tr>
-      <td><a href="./main/notice/NoticeBorderList.jsp"> 목록으로...</a><td>
+      <td><a href="../mainPost.jsp?menu=notice"> 목록으로...</a><td>
       
     <tr>
                   

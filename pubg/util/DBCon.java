@@ -11,7 +11,7 @@ public class DBCon {
 	private ResultSet rs;
 
 	private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private final String JDBC_URL = "jdbc:mysql://localhost:3306/battle";
+	private final String JDBC_URL = "jdbc:mysql://localhost:3306/pubgdb?useSSL=false";
 	private final String ID = "root";
 	private final String PASS = "1111";
 	

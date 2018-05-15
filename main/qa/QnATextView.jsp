@@ -65,7 +65,7 @@
 					<td>
 				<tr>
 				<tr>
-					<td><a href="QnABorderList.jsp"> 목록으로...</a>
+					<td><a href="../mainPost.jsp?menu=qa"> 목록으로...</a>
 					<td>
 				<tr>
 			</table>

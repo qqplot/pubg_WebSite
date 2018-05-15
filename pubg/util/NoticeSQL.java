@@ -15,20 +15,26 @@ public class NoticeSQL {
 		DBCon dbCon = new DBCon();
 		Connection conn = null;
 		Vector<NoticeBean> vc = new Vector<NoticeBean>();
-		String sql = "select  * from notice_border";
+		String sql = "select  * from notice_board";
 
 		try {
 			conn = DriverManager.getConnection(dbCon.getJDBC_URL(), dbCon.getID(), dbCon.getPASS());
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
-			while (rs.next()) {
+		        for(int i=0; i<30; i++) {
+		        	
+		        	if(rs.next()) {
 				NoticeBean noticeBean = new NoticeBean();
+   
 				noticeBean.setRegno(rs.getInt(1));
 				noticeBean.setNo_title(rs.getString("no_title"));
 				noticeBean.setNo_date(rs.getString("no_date"));
 				noticeBean.setNo_text(rs.getString("no_text"));
 				vc.add(noticeBean);
+		        	}
+           
+           
 			}
 		} catch (Exception e) {
 			System.out.println("Exception:" + e);
@@ -41,7 +47,7 @@ public class NoticeSQL {
 	public void insert(NoticeBean nbean) {
 		DBCon dbCon = new DBCon();
 		Connection conn = null;
-		String sql = "INSERT INTO `battle`.`notice_border` ( `user_id`, `no_title`, `no_text`, `no_date`) VALUES ( ?, ?,?, ?);";
+		String sql = "INSERT INTO `notice_board` ( `user_id`, `no_title`, `no_text`, `no_date`) VALUES ( ?, ?,?, ?);";
 
 		try {
 			conn = DriverManager.getConnection(dbCon.getJDBC_URL(), dbCon.getID(), dbCon.getPASS());
@@ -49,7 +55,7 @@ public class NoticeSQL {
 
 			NoticeBean beans = nbean;
 			System.out.printf(beans.getNo_date(), beans.getNo_text(), beans.getNo_title());
-			stmt.setString(1, "user");
+			stmt.setString(1, beans.getUser_id());
 			stmt.setString(2, beans.getNo_title());
 			stmt.setString(3, beans.getNo_text());
 			stmt.setString(4, beans.getNo_date());

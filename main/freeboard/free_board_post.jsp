@@ -7,8 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자유게시판</title>
 	<script type="text/javascript">
-		var btn_stop = document.getElementById("btn_stop");
-		
 		function goBack() {
 		    window.history.back();
 		}
@@ -19,7 +17,6 @@
 				else
 					return false;
 		}//move_check()
-		// btn_stop.onclick = move_check;
 	</script>
 
 </head>
@@ -32,12 +29,12 @@
 				
 		FreeBoardBeanz regBean = (FreeBoardBeanz) vt.elementAt(0);
 	%>
-	<form name="delForm" method="get" action="free_board_delete.jsp">
-	<table border="1">
+	<form name="delForm" method="get" action="free_board_delete.jsp" onsubmit="return move_check();">
+	<table border="1" width="350px">
 		<tr>
-			<th>글번호(regno)</th>
-			<th>작성자(user_id)</th>
-			<th>작성일(f_date)</th>
+			<th width="100">글번호</th>
+			<th width="100">작성자</th>
+			<th>작성일</th>
 		</tr>
 		<tr>
 			<td><%=regBean.getRegno()%></td>
@@ -45,7 +42,7 @@
 			<td><%=regBean.getF_date()%></td>
 		</tr>
 		<tr>
-			<th>글제목(f_title)</th>
+			<th>글제목</th>
 			<td colspan="2"><%=regBean.getF_title()%></td>
 		</tr>
 		<tr>
@@ -54,8 +51,9 @@
 	</table>
 	<p>
 		<%-- 함수 수정(확인기능추가) --%>
+		<button type="button" onclick="location.href='free_board_update.jsp?regno=<%=regno %>'">수정</button>
+		<input id="btn_stop" type="submit" value ="삭제" name='<%=regBean.getRegno() %>'/>
 		<button type="button" onclick="goBack();">뒤로가기</button> 
-		<input id="btn_stop" type="submit" value ="삭제" name='<%=regBean.getRegno() %>' onclick="move_check();"/>
 	</p>
 </form>
 </body>

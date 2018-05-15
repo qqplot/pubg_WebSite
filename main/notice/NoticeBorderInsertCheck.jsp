@@ -19,7 +19,9 @@
 	System.out.printf("title: %s ", title);
 	NoticeBean noticeBean = new NoticeBean();
 
-	noticeBean.setNo_title("admin");
+	String userID = (String) session.getAttribute("user");
+	noticeBean.setUser_id(userID);
+
 	noticeBean.setNo_title(title);
 	noticeBean.setNo_date(date);
 	noticeBean.setNo_text(textarea);
@@ -36,7 +38,7 @@
 
 	<script>
 		alert("정상적으로 입력이 되었습니다.");
-		location.href = "./NoticeBorderList.jsp"
+		location.href = "../mainPost.jsp?menu=notice"
 	</script>
 
 </body>

@@ -14,11 +14,11 @@
 		if (menu.equals("intro")) {
 			menu = "./intro/"+"intro.jsp";
 		} else if (menu.equals("notice")) {
-			menu = "./notice/"+"NoticeTextView.jsp";
+			menu = "./notice/"+"NoticeBorderList.jsp";
 		} else if (menu.equals("freeboard")) {
 			menu = "./freeboard/"+"free_board.jsp";
 		} else if (menu.equals("qa")) {
-			menu = "./qa/"+"QnATextView.jsp";
+			menu = "./qa/"+"QnABorderList.jsp";
 		}
 	%>
 	<table border="1" align="center" width="1000" height="600">

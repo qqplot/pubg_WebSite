@@ -27,17 +27,16 @@ public class QnASQL {
 			DBCon dbCon = new DBCon();
 			Connection conn = null;
 			Vector<QnABean> vc = new Vector<QnABean>();
-			String sql = "select  * from qa_border";
+			String sql = "select  * from qa_board";
 
 			try {
 
 				conn = DriverManager.getConnection(dbCon.getJDBC_URL(),dbCon.getID(),dbCon.getPASS());
 				stmt = conn.prepareStatement(sql);
 				rs = stmt.executeQuery(); 
-
-
-					while(rs.next()) {
-
+                        
+                  for(int i = 0; i< 30; i++) {
+					if(rs.next()) {
 
 						QnABean qnABean = new QnABean();
 						qnABean.setRegno(rs.getInt(1));
@@ -48,7 +47,9 @@ public class QnASQL {
 						qnABean.setEmail(rs.getString("email"));
 
 						vc.add(qnABean);
+                      
 					}
+                  }
 				
 			}catch (Exception e) {
 				System.out.println("Exception:" + e);
@@ -74,7 +75,7 @@ public class QnASQL {
 			DBCon dbCon = new DBCon();
 			Connection conn = null;
 			String sql = 
-					"insert into qa_border(`user_id` , `email` , `qa_title` , `qa_text`,`qa_date`)"+ 
+					"insert into qa_board(`user_id` , `email` , `qa_title` , `qa_text`,`qa_date`)"+ 
 							"values (?,?,?,?,?);";
 
 
@@ -106,7 +107,7 @@ public class QnASQL {
 		public void deleteID(QnABean qABean) {
 			DBCon dbCon = new DBCon();
 			Connection conn = null;
-			String sql = "delete from qa_border where regno= ?";
+			String sql = "delete from qa_board where regno= ?";
 
 
 			try {
@@ -133,7 +134,7 @@ public class QnASQL {
 	    public void updateID(QnABean qnABean) {
 	    	DBCon dbCon = new DBCon();
 			Connection conn = null;
-			String sql ="update qa_border set qa_title=?,qa_date=?,email = ?,qa_text =? where user_id=?";
+			String sql ="update qa_board set qa_title=?,qa_date=?,email = ?,qa_text =? where regno=?";
 
 
 			try {
@@ -146,7 +147,7 @@ public class QnASQL {
 			    stmt.setString(2, beans.getQ_date());
 			    stmt.setString(3, beans.getEmail());
 			    stmt.setString(4, beans.getQ_text());
-			    stmt.setString(5, beans.getUser_id());
+			    stmt.setInt(5 , beans.getRegno());
 
 				int count = stmt.executeUpdate(); //max count
 				System.out.printf(count+"callumn");
