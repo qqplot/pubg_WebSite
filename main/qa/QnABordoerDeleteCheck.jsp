@@ -34,7 +34,7 @@
 
 	<script>
 		alert("정상적으로 삭제 되었습니다.");
-		location.href = "./QnABorderList.jsp"
+		location.href = "../mainPost.jsp?menu=qa";
 	</script>
 </body>
 </html>

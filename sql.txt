@@ -48,7 +48,17 @@ CREATE TABLE notice_board (
 -- insert values
 insert into member(user_id, password, address, email) values('admin', '1111', '운영자', 'admin@naver.com');
 insert into member(user_id, password, address, email) values('aaa', 'bbb', '서울시 강남구', 'aaa@naver.com');
+insert into member(user_id, password, address, email) values('wow', 'b56bb', '수원시 권선구', 'wow@naver.com');
+insert into member(user_id, password, address, email) values('NeBeanZzae', 'b1b2b', '서울시 은평구', 'dbbd@naver.com');
+insert into member(user_id, password, address, email) values('hoho0516', 'bagbb', 'LA', 'aa12a@naver.com');
+
+
 insert into free_board(user_id, f_title, f_text, f_date) values('aaa','커뮤니티가 좋네요!', '하하하하', '2018-05-13');
+insert into free_board(user_id, f_title, f_text, f_date) values('wow','이예찬 짱!', '하하하하', '2018-05-13');
+insert into free_board(user_id, f_title, f_text, f_date) values('hoho0516','백종훈 짱!', '하하하하', '2018-05-13');
+insert into free_board(user_id, f_title, f_text, f_date) values('NeBeanZzae','채규병 짱!', '하하하하', '2018-05-13');
+insert into free_board(user_id, f_title, f_text, f_date) values('aaa','개발진 멋져!', '하하하하', '2018-05-13');
+
 
 
 delimiter $$
@@ -57,7 +67,7 @@ CREATE PROCEDURE setNotice()
   DECLARE i INT DEFAULT 1;    
   WHILE (i<=100) DO
    INSERT INTO `pubgDB`.`notice_board` (`user_id`, `no_title`, `no_text`, `no_date`) VALUES 
-    ('aaa', 'ssssss', 'ddddddddd', '2008-08-07');
+    ('admin', '공지사항입니다.', '버젼2.0이 완성되었습니다!!!', '2018-05-16');
    SET i=i+1;
   END WHILE;
  END$$
@@ -68,7 +78,7 @@ CREATE PROCEDURE setQA()
   DECLARE j INT DEFAULT 1;    
   WHILE (j<=100) DO
    insert into pubgDB.qa_board (user_id, email,qa_title, qa_text, qa_date) values 
-	('aaa','aaa@naver.com', CONCAT("title", j), CONCAT("texttest", j), '2018-05-07');
+	('wow','aaa@naver.com', CONCAT("질문이 있습니다!", j), CONCAT("사실 없어용~", j), '2018-05-07');
    SET j=j+1;
   END WHILE;
  END$$

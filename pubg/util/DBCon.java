@@ -1,4 +1,4 @@
-package pubg.util;
+﻿package pubg.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,37 +34,61 @@ public class DBCon {
 	public DBCon() {
 		try {
 			Class.forName(JDBC_DRIVER);
-			System.out.println("占쏙옙占쏙옙치");
+			System.out.println("드라이버 연결성공");
               
 		}catch(ClassNotFoundException e) {
-			System.out.println("占쏙옙占쏙옙譴占� 占쏙옙占쏙옙");
+			System.out.println("드라이버 연결 실패");
 		}
 	}
 	
 	
 	public void dbClose(ResultSet rs , PreparedStatement stmt , Connection conn) {
-		if(rs != null || stmt != null || conn != null) {
-			try {
+		 if(rs != null) {
+			 try {
 				rs.close();
-				stmt.close();
-				conn.close();
-			}catch(SQLException s) {
-				System.out.println("DB 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 error 占쌩삼옙");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		}
+		 }
+		 if(stmt != null) {
+			 try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 }
+		 if(conn != null) {
+			 try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 }
 	}	
 	
 	
 	
 	public void dbClose(PreparedStatement stmt , Connection conn) {
-		if(rs != null || stmt != null || conn != null) {
+		if(stmt != null) {
 			try {
-				rs.close();
 				stmt.close();
-				conn.close();
-			}catch(SQLException s) {
-				System.out.println("DB 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 error 占쌩삼옙");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
+		if(conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 }

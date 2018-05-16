@@ -9,11 +9,11 @@
 </head>
 <body>
 	<h1>배틀그라운드 커뮤니티</h1>
-
+	<p>
 	<a href="main.jsp">MAIN</a> |
 	<a href="logOut.jsp">로그아웃</a> |
 	<a href="resign_member.html">회원탈퇴</a>
-
+	</p>
 
 </body>
 </html>

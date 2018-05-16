@@ -53,7 +53,7 @@
 
 					</tr>
 					<tr id="border_title_background">
-						<td width="953px">날짜:<input type="date" size="100"
+						<td width="953px">날짜:<input type="date" size="100" value="2008-08-07"
 							name="no_date">
 						</td>
 					</tr>

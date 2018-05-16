@@ -12,19 +12,23 @@
 	
 		<table border="1"  align="center" width="1000" height="600">
 			<tr height="10%">
-				<td colspan="2" align="center">
+				<td colspan="2" align="center" bgcolor="gainsboro">
 					<%@ include file="mainHeader.jsp" %>																		
 				</td>
 			</tr>
 			<tr height=80%>
-				<td width=15%>
+				<td width=15% bgcolor="gainsboro">
 					<%@ include file="mainMenu.jsp" %>
 				</td>
-				<td width="85%">저희 홈페이지에 오신 것을 환영합니다. 
+				<td width="85%" bgcolor="lavenderblush">
+				<p align="center" >
+				<b>▷▷ 배틀그라운드 커뮤니티에 오신 것을 환영합니다. ◁◁ </b><br/><br/>
+				<img src="../images/main.png" height="300"/>
+				</p>
 				</td>
 			</tr>
 			<tr height=10%>
-				<td colspan="2" align="center">
+				<td colspan="2" align="center" bgcolor="gainsboro">
 					<%@ include file="mainFooter.jsp" %>
 				</td>
 			</tr>

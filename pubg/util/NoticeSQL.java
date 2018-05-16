@@ -47,23 +47,24 @@ public class NoticeSQL {
 	public void insert(NoticeBean nbean) {
 		DBCon dbCon = new DBCon();
 		Connection conn = null;
-		String sql = "INSERT INTO `notice_board` ( `user_id`, `no_title`, `no_text`, `no_date`) VALUES ( ?, ?,?, ?);";
+		String sql = "INSERT INTO notice_board (user_id,no_title,no_text,no_date) VALUES (?,?,?,?);";
 
 		try {
 			conn = DriverManager.getConnection(dbCon.getJDBC_URL(), dbCon.getID(), dbCon.getPASS());
 			stmt = conn.prepareStatement(sql);
 
 			NoticeBean beans = nbean;
-			System.out.printf(beans.getNo_date(), beans.getNo_text(), beans.getNo_title());
+			System.out.printf("beans -> insert -> user_id:%s, no_title:%s,no_text:%s,no_date:%s", beans.getUser_id(), beans.getNo_title(), beans.getNo_text(),beans.getNo_date());
 			stmt.setString(1, beans.getUser_id());
 			stmt.setString(2, beans.getNo_title());
 			stmt.setString(3, beans.getNo_text());
 			stmt.setString(4, beans.getNo_date());
 			int count = stmt.executeUpdate();
+			System.out.printf("insert count :%d", count);
 		} catch (Exception e) {
 			System.out.println("Exception:" + e);
 		} finally {
-			dbCon.dbClose(rs, stmt, conn);
+			dbCon.dbClose(stmt, conn);
 		}
 	}
 }

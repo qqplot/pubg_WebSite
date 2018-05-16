@@ -17,8 +17,8 @@
 %>
 
 <script type="text/javascript">
-	alert("삭제가 완료되었습니다. 메인으로 이동합니다.");
-	location.href='../main.jsp';
+	alert("삭제가 완료되었습니다. ");
+	document.location.href="../mainPost.jsp?menu=freeboard";
 </script>
 </body>
 </html>

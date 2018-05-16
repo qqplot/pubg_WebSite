@@ -26,8 +26,8 @@
 	FBjdbc.insertFBoardText(FBbean.getUser_id(), FBbean.getF_title(), FBbean.getF_text(), FBbean.getF_date());
 %>
 <script type="text/javascript">
-	alert("글 작성이 완료되었습니다. 메인화면으로 이동합니다.");
-	document.location.href="../main.jsp";
+	alert("글 작성이 완료되었습니다. ");
+	document.location.href="../mainPost.jsp?menu=freeboard";
 </script>
 
 </body>

@@ -15,13 +15,13 @@
 	String title = request.getParameter("title");
 	String date = request.getParameter("no_date");
 	String textarea = request.getParameter("no_text");
-
-	System.out.printf("title: %s ", title);
 	NoticeBean noticeBean = new NoticeBean();
 
 	String userID = (String) session.getAttribute("user");
-	noticeBean.setUser_id(userID);
 
+	System.out.printf("Parame : userID:%s , title: %s , date : %s , textarea : %s" , userID , title , date , textarea);
+	
+	noticeBean.setUser_id(userID);
 	noticeBean.setNo_title(title);
 	noticeBean.setNo_date(date);
 	noticeBean.setNo_text(textarea);
@@ -29,8 +29,7 @@
 	NoticeSQL noticeSQL = new NoticeSQL();
 
 	noticeSQL.insert(noticeBean);
-
-	session.invalidate();
+	
 %>
 </head>
 <body>

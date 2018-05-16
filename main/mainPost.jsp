@@ -23,17 +23,19 @@
 	%>
 	<table border="1" align="center" width="1000" height="600">
 		<tr height="10%">
-			<td colspan="2" align="center"><%@ include file="mainHeader.jsp"%>
+			<td colspan="2" align="center"  bgcolor="gainsboro">
+			<%@ include file="mainHeader.jsp"%>
 			</td>
 		</tr>
-		<tr height=80%>
+		<tr height=80% bgcolor="gainsboro">
 			<td width=15%><%@ include file="mainMenu.jsp"%>
 			</td>
-			<td width="85%">
+			<td width="85%" bgcolor="lavenderblush">
 				<jsp:include page="<%=menu %>" flush="false"/>
 		</tr>
-		<tr height=10%>
-			<td colspan="2" align="center"><%@ include file="mainFooter.jsp"%>
+		<tr height=10% >
+			<td colspan="2" align="center" bgcolor="gainsboro">
+			<%@ include file="mainFooter.jsp"%>
 			</td>
 		</tr>
 	</table>
